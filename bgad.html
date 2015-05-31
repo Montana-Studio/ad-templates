@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var bodyControl = document.body,
+			imgCampain = 'http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKCT0YLPSRABGAEyCGHGCpSIQaAF',
+			imgSizewidth = '2000px',
+			imgSizeheight ='1141px',
+			linkUrl = 'http://www.chicfit.cl',
+			linkCampain = '<a href="'+linkUrl+'" target="_blank" style="display:block;position:absolute;z-index:0;width:100%;height:100%;"></a>';
+
+		bodyControl.style.backgroundImage = 'url('+imgCampain+')';
+		bodyControl.style.backgroundSize = ''+imgSizewidth+' '+imgSizeheight+'';
+		bodyControl.style.backgroundRepeat = 'no-repeat';
+		bodyControl.style.backgroundPosition = 'top center';
+		bodyControl.innerHTML = linkCampain;
+	</script>
+
+	<div style="width:970px;margin:120px auto 0;height:1024px;background:#fff;position:relative;"></div>
+</body>
+</html>

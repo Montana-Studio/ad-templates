@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script> 
+		var tag = document.createElement('script');
+		tag.src = 'https://www.youtube.com/player_api';
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		var player;
+
+		function onYouTubePlayerAPIReady(){
+		    player = new YT.Player('video-ad-mt',{
+		        width: '640px',
+	        	height: '480px',
+		        videoId: 'T-tfJRXoUdk',
+		        playerVars:{ 'autoplay': 1, 'controls': 0, 'showinfo': 0,'rel':0},
+		        events: {
+		        	'onStateChange': onPlayerStateChange
+		        }
+		    });
+
+			var links = '<a id="link-box" href="http://www.google.com" style="width:100%;height:100%;display:block;position:relative;z-index:999;" target="_blank"></a>'
+			document.getElementById('link-campana').innerHTML = links;
+
+			document.getElementById('btn-close-mt').onclick = function(){destroyIframe();};
+
+			function destroyIframe(){
+				player.destroy();
+				document.getElementById('itt-ad-mt').style.display = 'none';
+			}
+
+			function onPlayerStateChange(event) {        
+		        if(event.data === 0) {
+					var img = '<img src="assets/img/nike_llamado2.gif" width="640" height="480" border="0"/>';
+					document.getElementById('link-box').innerHTML = img;
+
+					setTimeout(function(){
+						player.destroy();
+						document.getElementById('itt-ad-mt').style.display = 'none';
+					}, 5000);
+		        }
+		    }
+		};
+	</script>
+	<div id="itt-ad-mt" style="position:fixed;width:100%;height:100%;left:0;top:0;background-color:rgba(0,0,0,.8);">
+		<div id="video-ad-mt" style="position:absolute;width:640px;height:480px;top:15%;margin:0 auto;z-index:1;left:0;right:0;"></div>
+		<div id="content-ad-mt" style="width:640px;height:480px;top:15%;position:absolute;z-index:99;margin:0 auto;left:0;right:0;">
+
+			<div id="link-campana" style="width:100%;height:100%;position:absolute;z-index:99;"></div>
+
+			<div id="btn-close-mt" style="width:20px;height:20px;float:right;margin:-5px -5px 0 0;position:relative;z-index:999;cursor:pointer;">
+				<svg viewBox="0 0 20 20" style="width:100%;height:auto;">
+					<circle stroke="#ffffff" cx="9.998" cy="9.891" r="9.185"/>
+					<g>
+						<rect fill="#ffffff" x="9.205" y="5.233" transform="matrix(0.7074 -0.7068 0.7068 0.7074 -4.1419 9.9935)" width="1.589" height="9.532"/>
+						
+						<rect fill="#ffffff" x="9.206" y="5.233" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 9.9999 24.1411)" width="1.588" height="9.533"/>
+					</g>
+				</svg>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
