@@ -3,24 +3,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
-	<script>
-	function windowLoad(){
-		
-		var elementVisible = 'document.getElementById("ad").style.display';
+
+	<div id="ad">
+		<a id="clickthrought"></a>
+
+		<a id="sharefb"><i class="fa fa-facebook-square"></i></a>
+		<a id="sharetw"><i class="fa fa-twitter-square"></i></a>
+
+	</div>
+
+	<script async type="text/javascript">
 	
-		if(elementVisible == 'block'){
-			console.log('visible');
-		}else{
-			console.log('oculto');
-		}
-	}
+		var selectIdad = document.getElementById('ad'),
+			shareFacebook = document.getElementById('sharefb'),
+			shareTwitter = document.getElementById('sharetw'),
+			linkCampaing = document.getElementById('clickthrought'),
 
-	windowLoad();
+			imageBg = 'assets/img/nike_llamado.gif',
+			urlShare = 'http://www.google.cl'
+			shareFB = ''+urlShare+'',
+			shareTW = 'texto para compartir max. 140 caracteres y '+urlShare+'';
+		
+		selectIdad.setAttribute('style','width:300px;height:250px;background-image:url('+imageBg+');position:relative;overflow:hidden;');
 
+		//share facebook
+		shareFacebook.setAttribute('style','width:25px;height:25px;position:absolute;left:5px;bottom:5px;display:table;text-align:center;z-index:2;');
+		shareFacebook.setAttribute('href','https://www.facebook.com/sharer/sharer.php?u='+shareFB+'');
+		shareFacebook.setAttribute('target','_blank');
+
+		//share twitter
+		shareTwitter.setAttribute('style','width:25px;height:25px;position:absolute;left:35px;bottom:5px;display:table;text-align:center;z-index:2;');
+		shareTwitter.setAttribute('href','https://twitter.com/home?status='+shareTW+'');
+		shareTwitter.setAttribute('target','_blank');
+
+		//link campaña
+		linkCampaing.setAttribute('style','width:100%;height:100%;position:absolute;left:0;top:0;z-index:1;');
+		linkCampaing.setAttribute('href',''+urlShare+'');
 	</script>
-
-	<div id="ad" style="position:relative;top:2600px;width:100px;height:100px;">hola</div>
 </body>
 </html>
